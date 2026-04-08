@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Editor — Create & Edit Vector Graphics | QuickUtils</title>
+    <meta name="description" content="Free online SVG editor. Create and edit vector graphics with shapes, paths, text. Transform, style, and export optimized SVG or PNG.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✏️</text></svg>">
+    <link rel="stylesheet" href="quickutils-core.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar"><div class="container nav-inner">
+        <a href="https://quickutils.top" class="brand">✏️ SVG Editor</a>
+        <div class="nav-links">
+            <button class="btn btn-sm btn-secondary" id="undoBtn" title="Undo">↩️</button>
+            <button class="btn btn-sm btn-secondary" id="redoBtn" title="Redo">↪️</button>
+            <button class="btn btn-sm btn-primary" id="exportSvgBtn">💾 SVG</button>
+            <button class="btn btn-sm btn-secondary" id="exportPngBtn">🖼️ PNG</button>
+            <a href="https://ko-fi.com/dayatin" target="_blank" class="kofi-link">☕</a>
+            <button id="themeBtn" class="theme-btn">🌙</button>
+        </div>
+    </div></nav>
+    <main class="editor-layout">
+        <aside class="toolbar glass-card" id="toolbar">
+            <div class="tool-group"><span class="tool-label">Tools</span>
+                <button class="tool-btn active" data-tool="select" title="Select">🔲</button>
+                <button class="tool-btn" data-tool="rect" title="Rectangle">▬</button>
+                <button class="tool-btn" data-tool="circle" title="Circle">⬤</button>
+                <button class="tool-btn" data-tool="ellipse" title="Ellipse">⬮</button>
+                <button class="tool-btn" data-tool="line" title="Line">╲</button>
+                <button class="tool-btn" data-tool="polyline" title="Polyline">📐</button>
+                <button class="tool-btn" data-tool="text" title="Text">T</button>
+                <button class="tool-btn" data-tool="path" title="Pen">🖊️</button>
+            </div>
+            <div class="tool-group"><span class="tool-label">Actions</span>
+                <button class="tool-btn" id="deleteBtn" title="Delete">🗑️</button>
+                <button class="tool-btn" id="duplicateBtn" title="Duplicate">📋</button>
+                <button class="tool-btn" id="bringFrontBtn" title="Bring Front">⬆️</button>
+                <button class="tool-btn" id="sendBackBtn" title="Send Back">⬇️</button>
+                <button class="tool-btn" id="clearAllBtn" title="Clear All">🧹</button>
+            </div>
+        </aside>
+        <div class="canvas-area">
+            <div class="canvas-container" id="canvasContainer">
+                <svg id="svgCanvas" xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+                    <defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(128,128,128,0.15)" stroke-width="0.5"/></pattern></defs>
+                    <rect width="100%" height="100%" fill="url(#grid)"/>
+                </svg>
+            </div>
+            <div class="canvas-info"><span id="coordsDisplay">0, 0</span><span id="zoomDisplay">100%</span></div>
+        </div>
+        <aside class="properties-panel glass-card" id="propsPanel">
+            <h3>Properties</h3>
+            <div id="propFields">
+                <p class="text-muted" style="font-size:0.8rem">Select an element to edit properties</p>
+            </div>
+            <div class="prop-section"><span class="tool-label">Fill</span>
+                <input type="color" id="fillColor" value="#6366f1"><label><input type="checkbox" id="noFill"> No Fill</label>
+            </div>
+            <div class="prop-section"><span class="tool-label">Stroke</span>
+                <input type="color" id="strokeColor" value="#ffffff">
+                <div class="prop-row"><label>Width</label><input type="range" id="strokeWidth" min="0" max="20" value="2"><span id="strokeWidthVal">2</span></div>
+            </div>
+            <div class="prop-section"><span class="tool-label">Opacity</span>
+                <div class="prop-row"><input type="range" id="opacity" min="0" max="100" value="100"><span id="opacityVal">100%</span></div>
+            </div>
+            <div class="prop-section"><span class="tool-label">Transform</span>
+                <div class="prop-row"><label>Rotation</label><input type="range" id="rotation" min="0" max="360" value="0"><span id="rotationVal">0°</span></div>
+            </div>
+        </aside>
+    </main>
+    <footer class="footer"><div class="container copyright">© 2026 QuickUtils. All rights reserved.</div></footer>
+    <script src="quickutils-core.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
